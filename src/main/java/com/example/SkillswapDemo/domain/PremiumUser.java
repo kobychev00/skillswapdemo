@@ -3,7 +3,7 @@ package com.example.SkillswapDemo.domain;
 public class PremiumUser extends CertifiedUser{
     private String premiumId;
 
-    public PremiumUser(Long id,
+    public PremiumUser(int id,
                        String login,
                        String password,
                        String name,

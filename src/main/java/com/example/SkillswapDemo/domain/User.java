@@ -1,13 +1,13 @@
 package com.example.SkillswapDemo.domain;
 
 public class User {
-    private Long id;
+    private int id;
     private String login;
     private String password;
     private String name;
     private String surname;
 
-    public User(Long id, String login, String password, String name, String surname) {
+    public User(int id, String login, String password, String name, String surname) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -15,11 +15,11 @@ public class User {
         this.surname = surname;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

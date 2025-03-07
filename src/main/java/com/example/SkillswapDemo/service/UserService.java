@@ -1,5 +1,5 @@
 package com.example.SkillswapDemo.service;
 
 public interface UserService {
-    String getUserById(String id);
+    String getUserById(int id);
 }
