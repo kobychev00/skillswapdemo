@@ -31,10 +31,6 @@ public class User {
         this.login = login;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -57,5 +53,13 @@ public class User {
 
     public String getFullName (){
         return name + " " + surname;
+    }
+
+    public String getFullInfo() {
+        return "<b>User info:</b><br>"
+                + id + "<br>"
+                + login + "<br>"
+                + name + "<br>"
+                + surname + "<br>";
     }
 }

@@ -24,4 +24,9 @@ public class UserServiceImpl implements UserService{
         return (user!=null) ? user.getLogin():"User not found";
     }
 
+    @Override
+    public String getUserInfoById(int id) {
+        User user = users.get(id);
+        return (user!=null) ? user.getFullInfo():"User not found";
+    }
 }
