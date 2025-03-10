@@ -25,8 +25,16 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public String getUserInfoById(int id) {
+    public String getUserFullName(int id) {
         User user = users.get(id);
-        return (user!=null) ? user.getFullInfo():"User not found";
+        return (user != null) ? user.getFullName() :"User not found";
     }
+
+    @Override
+    public StringBuilder getUserInfoById(int id) {
+        User user = users.get(id);
+        StringBuilder result = new StringBuilder("User not found");
+        return (user!=null) ? user.getFullInfo():result;
+    }
+
 }

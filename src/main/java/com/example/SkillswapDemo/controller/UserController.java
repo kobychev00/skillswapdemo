@@ -30,9 +30,18 @@ public class UserController {
 
     }
 
+    @GetMapping("/full-name{id}")
+    public ResponseEntity<String> getFullName(@PathVariable int id) {
+        String result = userService.getUserFullName(id);
+        if ("User not found".equals(result)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
+        }
+        return ResponseEntity.ok(result);
+    }
+
     @GetMapping("/info{id}")
-    public ResponseEntity<String> getUserInfo(@PathVariable int id) {
-        String result = userService.getUserInfoById(id);
+    public ResponseEntity<StringBuilder> getUserInfo(@PathVariable int id) {
+        StringBuilder result = userService.getUserInfoById(id);
         if ("User not found".equals(result)){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
         }

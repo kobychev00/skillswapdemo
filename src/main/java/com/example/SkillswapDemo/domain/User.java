@@ -1,4 +1,7 @@
 package com.example.SkillswapDemo.domain;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
 
 public class User {
     private int id;
@@ -6,13 +9,24 @@ public class User {
     private String password;
     private String name;
     private String surname;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm", timezone = "Europe/Moscow")
+    private Date registrationDate;
 
-    public User(int id, String login, String password, String name, String surname) {
+    public User(int id, String login, String password, String name, String surname, Date registrationDate) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.name = name;
         this.surname = surname;
+        this.registrationDate = registrationDate;
+    }
+
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(int year, int month, int date) {
+        this.registrationDate = new Date(year, month, date);
     }
 
     public int getId() {
@@ -55,11 +69,18 @@ public class User {
         return name + " " + surname;
     }
 
-    public String getFullInfo() {
-        return "<b>User info:</b><br>"
-                + id + "<br>"
-                + login + "<br>"
-                + name + "<br>"
-                + surname + "<br>";
+    public StringBuilder getFullInfo() {
+        StringBuilder result = new StringBuilder();
+        result.append("</b>User Info<br></b>")
+                .append("<table border = '1', style = 'border-collapse: collapse;'>")
+                .append("<tr><th>ID</th><th>Login</th><th>Name</th><th>Surname</th><th>Registration Date</th></tr>")
+                .append("<tr>")
+                .append("<td>").append(getId()).append("</td>")
+                .append("<td>").append(getLogin()).append("</td>")
+                .append("<td>").append(getName()).append("</td>")
+                .append("<td>").append(getSurname()).append("</td>")
+                .append("<td>").append(getRegistrationDate()).append("</td>")
+                .append("</table>");
+        return result;
     }
 }

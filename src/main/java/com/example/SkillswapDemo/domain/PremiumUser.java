@@ -1,5 +1,7 @@
 package com.example.SkillswapDemo.domain;
 
+import java.util.Date;
+
 public class PremiumUser extends CertifiedUser{
     private String premiumId;
 
@@ -8,10 +10,15 @@ public class PremiumUser extends CertifiedUser{
                        String password,
                        String name,
                        String surname,
+                       Date registrationDate,
                        String certificationId,
                        String premiumId) {
-        super(id, login, password, name, surname, certificationId);
+        super(id, login, password, name, surname, registrationDate, certificationId);
         this.premiumId = premiumId;
+    }
+
+    public String getPremiumId() {
+        return premiumId;
     }
 
     public boolean isPremium (){
@@ -19,13 +26,25 @@ public class PremiumUser extends CertifiedUser{
     }
 
     @Override
-    public String getFullInfo() {
-        return "<b>User info:</b><br>"
-                + getId() + "<br>"
-                + getLogin() + "<br>"
-                + getName() + "<br>"
-                + getSurname() + "<br>"
-                + getCertificationId() + "<br>"
-                + premiumId + "<br>";
+    public String getFullName (){
+        return getName() + " " + getSurname();
+    }
+
+    @Override
+    public StringBuilder getFullInfo() {
+        StringBuilder result = new StringBuilder();
+        result.append("</b>User Info<br></b>")
+                .append("<table border = '1', style = 'border-collapse: collapse;'>")
+                .append("<tr><th>ID</th><th>Login</th><th>Name</th><th>Surname</th><th>Registration Date</th><th>Certification ID</th><th>Premium ID</th></tr>")
+                .append("<tr>")
+                .append("<td>").append(getId()).append("</td>")
+                .append("<td>").append(getLogin()).append("</td>")
+                .append("<td>").append(getName()).append("</td>")
+                .append("<td>").append(getSurname()).append("</td>")
+                .append("<td>").append(getRegistrationDate()).append("</td>")
+                .append("<td>").append(getCertificationId()).append("</td>")
+                .append("<td>").append(getPremiumId()).append("</td>")
+                .append("</table>");
+        return result;
     }
 }
